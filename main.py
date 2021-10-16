@@ -14,8 +14,18 @@ def ordemAlfabetica(listaUsuario):
       for aluno in listaUsuario:
         print(aluno["nome"])
         print(aluno["email"])
-        return aluno
 
+def buscaUsuario(listaUsuario):
+    
+    usuario = print(input("Digite o nome que deseja buscar: "))
+    
+    if usuario in listaUsuario:
+        print("ta na lista")
+    else:
+        print("nao ta na lista")    
+
+    return usuario
+        
 def desenharMenu():
     print("Defina qual ação quer fazer: ")
     print("[1] - Criar um usuário")
@@ -51,21 +61,17 @@ def escolhaUsuario():
             mostrarUsuario(listaUsuario)
 
         elif(opcaoUsuario == 3):
-            listaUsuario.sort()
             ordemAlfabetica()
-            
+
+        elif(opcaoUsuario == 4):
+            buscaUsuario(listaUsuario)
         elif(opcaoUsuario == 7):
             print("Saindo da sala...")
             break
         
-      
-            
-            
-
 def main():
     escolhaUsuario()
     
-       
-    
+
 if(__name__ == "__main__"):
     main()
