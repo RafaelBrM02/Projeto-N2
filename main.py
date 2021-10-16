@@ -14,14 +14,35 @@ def ordemAlfabetica(listaUsuario):
       for aluno in listaUsuario:
         print(aluno["nome"])
         print(aluno["email"])
+        return aluno
+
+def desenharMenu():
+    print("Defina qual ação quer fazer: ")
+    print("[1] - Criar um usuário")
+    print("[2] - Ver todos os usuários")
+    print("[3] - Ver usuários por ordem alfabética")
+    print("[4] - Buscar usuário pelo nome")
+    print("[5] - Remover um usuário pelo email")
+    print("[6] - Alterar nome de um usuário pelo email")
+    print("[7] - Sair")
+    
+   
+
+def escolhaMenu(opcaoUsuario):
+    desenharMenu()
+    opcaoUsuario = int(input(("Escolha: ")))
+
+    return opcaoUsuario
         
         
 def escolhaUsuario():
-    opcaoUsuario = 0
+    escolhaAtual = 0
     listaUsuario = []
 
-    while (opcaoUsuario < 7 ):
-        opcaoUsuario = int(input("Defina qual ação quer fazer: "))
+    while (escolhaAtual < 7 ):
+        opcaoUsuario = escolhaMenu(escolhaAtual)
+        while(opcaoUsuario > 7):
+            opcaoUsuario = escolhaMenu(escolhaAtual)
         if(opcaoUsuario == 1):
             usuarioAluno = criarAluno()
             listaUsuario.append(usuarioAluno)
@@ -33,13 +54,11 @@ def escolhaUsuario():
             listaUsuario.sort()
             ordemAlfabetica()
             
-
         elif(opcaoUsuario == 7):
             print("Saindo da sala...")
             break
-        else:
-            print("Opção não foi reconhecida..")
-            break
+        
+      
             
             
 
