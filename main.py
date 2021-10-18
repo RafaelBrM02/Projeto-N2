@@ -1,32 +1,45 @@
-def criarAluno():
-    usuarioAluno = {}
-    usuarioAluno["nome"] = input("Digite o nome completo do aluno: ")
-    usuarioAluno["email"] = input("Digite o email do aluno: ")
-    return usuarioAluno
-
-def mostrarUsuario(listaUsuario):
-    for aluno in listaUsuario:
-        print(aluno["nome"])
-        print(aluno["email"])
-        print("")
-
-def ordemAlfabetica(listaUsuario):
-      for aluno in listaUsuario:
-        print(aluno["nome"])
-        print(aluno["email"])
-
-def buscaUsuario(listaUsuario):
+from time import sleep
+def criarAluno(usuario):
     
-    usuario = print(input("Digite o nome que deseja buscar: "))
+    nome = input('Nome? ')
+    email = input('email? ')
     
-    if usuario in listaUsuario:
-        print("ta na lista")
+    usuario.append((nome, email))
+
+def mostrarUsuario(usuario):
+    for mostrar in usuario:
+        nome, email = mostrar
+        print(f'Nome: {nome} - email: {email}')
+
+def ordemAlfabetica(usuario):
+    
+    for ordem in usuario:
+        nome, email = ordem
+        print(f'Nome: {nome} - email: {email}')
+        #AINDA NAO FUNCIONA
+       
+
+def buscaUsuario(usuario):
+    nome_desejado = input('qual nome: ')
+    for pessoa in usuario:
+        nome, email = pessoa
+        if nome == nome_desejado:
+            print(f'Nome: {nome}, email: {email}')
+            break
     else:
-        print("nao ta na lista")    
+        print(f'Usuario com nome {nome_desejado} não encontrado')
 
-    return usuario
+def removerUsuario(usuario):
+    email = input('email? ')
+    
+    usuario.remove((nome, email)) 
+
+def alterarUsuario(usuario):
+     print("ok")
         
 def desenharMenu():
+    print("---------------------------------------------------")
+    print("")
     print("Defina qual ação quer fazer: ")
     print("[1] - Criar um usuário")
     print("[2] - Ver todos os usuários")
@@ -35,6 +48,8 @@ def desenharMenu():
     print("[5] - Remover um usuário pelo email")
     print("[6] - Alterar nome de um usuário pelo email")
     print("[7] - Sair")
+    print("")
+    print("---------------------------------------------------")
     
    
 
@@ -47,31 +62,42 @@ def escolhaMenu(opcaoUsuario):
         
 def escolhaUsuario():
     escolhaAtual = 0
-    listaUsuario = []
+    usuario = []
 
-    while (escolhaAtual < 7 ):
+    while True:
         opcaoUsuario = escolhaMenu(escolhaAtual)
         while(opcaoUsuario > 7):
+            print("Numero não foi reconhecido...Escolha outro!")
+            print("")
+            sleep(2)
             opcaoUsuario = escolhaMenu(escolhaAtual)
         if(opcaoUsuario == 1):
-            usuarioAluno = criarAluno()
-            listaUsuario.append(usuarioAluno)
+            criarAluno(usuario)
 
         elif(opcaoUsuario == 2):
-            mostrarUsuario(listaUsuario)
+            mostrarUsuario(usuario)
 
         elif(opcaoUsuario == 3):
-            ordemAlfabetica()
+            ordemAlfabetica(usuario)
+            
 
         elif(opcaoUsuario == 4):
-            buscaUsuario(listaUsuario)
+            buscaUsuario(usuario)
+
+        elif(opcaoUsuario == 5):
+            removerUsuario(usuario)
+            print("Usuario foi removido!!")
+
+        
+            
         elif(opcaoUsuario == 7):
             print("Saindo da sala...")
             break
+        sleep(2)
         
 def main():
     escolhaUsuario()
     
 
-if(__name__ == "__main__"):
+if(__name__ == "_main_"):
     main()
