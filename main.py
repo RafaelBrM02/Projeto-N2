@@ -12,11 +12,8 @@ def mostrarUsuario(usuario):
         print(f'Nome: {nome} - email: {email}')
 
 def ordemAlfabetica(usuario):
-    
-    for ordem in usuario:
-        nome, email = ordem
-        print(f'Nome: {nome} - email: {email}')
-        #AINDA NAO FUNCIONA
+        usuario.sort(reverse=False)
+        print("Lista Ordenada:", usuario)
        
 
 def buscaUsuario(usuario):
@@ -32,7 +29,7 @@ def buscaUsuario(usuario):
 def removerUsuario(usuario):
     email = input('email? ')
     
-    usuario.remove((nome, email)) 
+    usuario.remove((email)) 
 
 def alterarUsuario(usuario):
      print("ok")
@@ -99,5 +96,5 @@ def main():
     escolhaUsuario()
     
 
-if(__name__ == "_main_"):
+if(__name__ == "__main__"):
     main()
