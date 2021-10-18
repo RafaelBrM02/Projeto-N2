@@ -11,9 +11,10 @@ def mostrarUsuario(usuario):
         nome, email = mostrar
         print(f'Nome: {nome} - email: {email}')
 
-def ordemAlfabetica(usuario):
-        usuario.sort(reverse=False)
-        print("Lista Ordenada:", usuario)
+def ordemAlfabetica(usuario):   
+    usuario.sort(reverse=False)
+    print("Lista Ordenada:", usuario)
+        
        
 
 def buscaUsuario(usuario):
@@ -27,9 +28,15 @@ def buscaUsuario(usuario):
         print(f'Usuario com nome {nome_desejado} não encontrado')
 
 def removerUsuario(usuario):
-    email = input('email? ')
-    
-    usuario.remove((email)) 
+    email_desejado = input('qual email: ')
+    for pessoa in usuario:
+        nome, email = pessoa
+        if email == email_desejado:
+            usuario.remove((nome, email))
+            break
+    else:
+        print(f'Usuario com nome {email_desejado} não encontrado')
+     
 
 def alterarUsuario(usuario):
      print("ok")
@@ -83,10 +90,8 @@ def escolhaUsuario():
 
         elif(opcaoUsuario == 5):
             removerUsuario(usuario)
-            print("Usuario foi removido!!")
-
-        
             
+
         elif(opcaoUsuario == 7):
             print("Saindo da sala...")
             break
