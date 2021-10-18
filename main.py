@@ -33,6 +33,7 @@ def removerUsuario(usuario):
         nome, email = pessoa
         if email == email_desejado:
             usuario.remove((nome, email))
+            print("Usuario foi removido com sucesso!")
             break
     else:
         print(f'Usuario com nome {email_desejado} não encontrado')
