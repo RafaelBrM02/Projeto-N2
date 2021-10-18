@@ -1,8 +1,8 @@
 from time import sleep
 def criarAluno(usuario):
     
-    nome = input('Nome? ')
-    email = input('email? ')
+    nome = input('Qual seu nome: ')
+    email = input('Qual seu e-mail: ')
     
     usuario.append((nome, email))
 
@@ -12,23 +12,25 @@ def mostrarUsuario(usuario):
         print(f'Nome: {nome} - email: {email}')
 
 def ordemAlfabetica(usuario):   
-    usuario.sort(reverse=False)
-    print("Lista Ordenada:", usuario)
+    ordem = usuario
+    ordem.sort()
+    print("Lista ordenada", ordem)
         
-       
 
+    #print("Lista Ordenada:", usuario)
+        
 def buscaUsuario(usuario):
-    nome_desejado = input('qual nome: ')
+    nome_desejado = input('qual nome voce quer procurar: ')
     for pessoa in usuario:
         nome, email = pessoa
         if nome == nome_desejado:
             print(f'Nome: {nome}, email: {email}')
             break
     else:
-        print(f'Usuario com nome {nome_desejado} não encontrado')
+        print(f'Usuario com nome {nome_desejado} não foi encontrado')
 
 def removerUsuario(usuario):
-    email_desejado = input('qual email: ')
+    email_desejado = input('qual email voce quer procurar: ')
     for pessoa in usuario:
         nome, email = pessoa
         if email == email_desejado:
@@ -36,11 +38,20 @@ def removerUsuario(usuario):
             print("Usuario foi removido com sucesso!")
             break
     else:
-        print(f'Usuario com nome {email_desejado} não encontrado')
+        print(f'Usuario com email {email_desejado} não foi encontrado')
      
 
 def alterarUsuario(usuario):
-     print("ok")
+    email_desejado = input('qual email voce quer procurar: ')
+    for pessoa in usuario:
+        nome, email = pessoa
+        if email == email_desejado:
+            novoNome = input("digite o novo nome: ")
+            usuario[nome] = novoNome
+            print("Usuario esta com o nome trocado!")
+            break
+    else:
+        print(f'Usuario com email {email_desejado} não foi encontrado')
         
 def desenharMenu():
     print("---------------------------------------------------")
@@ -85,14 +96,15 @@ def escolhaUsuario():
         elif(opcaoUsuario == 3):
             ordemAlfabetica(usuario)
             
-
         elif(opcaoUsuario == 4):
             buscaUsuario(usuario)
 
         elif(opcaoUsuario == 5):
             removerUsuario(usuario)
-            
 
+        elif(opcaoUsuario == 6):
+            alterarUsuario(usuario)
+            
         elif(opcaoUsuario == 7):
             print("Saindo da sala...")
             break
