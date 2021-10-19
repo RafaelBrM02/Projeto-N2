@@ -15,10 +15,7 @@ def ordemAlfabetica(usuario):
     ordem = usuario
     ordem.sort()
     print(f"Lista ordenada: ", ordem)
-        
-
-    
-        
+          
 def buscaUsuario(usuario):
     nome_desejado = input('qual nome voce quer procurar: ')
     for pessoa in usuario:
@@ -40,7 +37,6 @@ def removerUsuario(usuario):
         else:
             print(f'Usuario com email {email_desejado} não foi encontrado')
      
-
 def alterarUsuario(usuario):
     
     email_desejado = input('qual email voce quer procurar: ')
@@ -70,15 +66,12 @@ def desenharMenu():
     print("")
     print("---------------------------------------------------")
     
-   
-
 def escolhaMenu(opcaoUsuario):
     desenharMenu()
     opcaoUsuario = int(input(("Escolha: ")))
 
     return opcaoUsuario
-        
-        
+           
 def escolhaUsuario():
     escolhaAtual = 0
     usuario = []
@@ -116,6 +109,5 @@ def escolhaUsuario():
 def main():
     escolhaUsuario()
     
-
 if(__name__ == "__main__"):
     main()
