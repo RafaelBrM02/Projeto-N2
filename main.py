@@ -14,10 +14,10 @@ def mostrarUsuario(usuario):
 def ordemAlfabetica(usuario):   
     ordem = usuario
     ordem.sort()
-    print("Lista ordenada", ordem)
+    print(f"Lista ordenada: ", ordem)
         
 
-    #print("Lista Ordenada:", usuario)
+    
         
 def buscaUsuario(usuario):
     nome_desejado = input('qual nome voce quer procurar: ')
@@ -26,8 +26,8 @@ def buscaUsuario(usuario):
         if nome == nome_desejado:
             print(f'Nome: {nome}, email: {email}')
             break
-    else:
-        print(f'Usuario com nome {nome_desejado} não foi encontrado')
+        else:
+            print(f'Usuario com nome {nome_desejado} não foi encontrado')
 
 def removerUsuario(usuario):
     email_desejado = input('qual email voce quer procurar: ')
@@ -37,21 +37,24 @@ def removerUsuario(usuario):
             usuario.remove((nome, email))
             print("Usuario foi removido com sucesso!")
             break
-    else:
-        print(f'Usuario com email {email_desejado} não foi encontrado')
+        else:
+            print(f'Usuario com email {email_desejado} não foi encontrado')
      
 
 def alterarUsuario(usuario):
+    
     email_desejado = input('qual email voce quer procurar: ')
     for pessoa in usuario:
         nome, email = pessoa
         if email == email_desejado:
-            novoNome = input("digite o novo nome: ")
-            usuario[nome] = novoNome
+            usuario.remove((nome))
+            nome = input('Qual seu novo nome: ')
+            usuario.append((nome))
             print("Usuario esta com o nome trocado!")
             break
-    else:
-        print(f'Usuario com email {email_desejado} não foi encontrado')
+        else:
+            print(f'Usuario com email {email_desejado} não foi encontrado')
+    #não conseguimos
         
 def desenharMenu():
     print("---------------------------------------------------")
